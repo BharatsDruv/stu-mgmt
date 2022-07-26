@@ -8,10 +8,11 @@ import java.io.*;
 
 public class CourseService {
 	
-	public static ArrayList<Course> courseList=new ArrayList<>();
+	public static ArrayList<Course> courseList;
 	
 	 
 	public CourseService() {
+		courseList=new ArrayList<>();
 		courseList.add(new Course(101, "CS1"));
 		courseList.add(new Course(102, "CS2"));
 		courseList.add(new Course(103, "CS3"));

@@ -13,10 +13,12 @@ public class StudentApplication {
 	public static void main(String[] ar) throws IOException
 	{
 		int f=0;
-		do {
-		Scanner in=new Scanner(System.in);
-		int choice =0;
 		StudentService ss=new StudentService();
+		Scanner in=new Scanner(System.in);
+		
+		do {
+		int choice =0;
+		
 		System.out.println("Course Registration System\n Select\n"+
 		"1. Login\n"
 		+"2. Register\n"
@@ -58,11 +60,14 @@ public class StudentApplication {
 								4. Pay Fee
 							 */
 							System.out.println("Welcome "+ m.getStudent_name());
+							boolean login=true;
+							do{
 							System.out.println("Select\n"+
 							"1. Add course\n"
 							+"2. Drop course\n"
 							+"3. View Grads\n"
-							+"4. Pay Fee\n");
+							+"4. Pay Fee\n"
+							+ "5. Logout");
 							
 							int menu_choice=in.nextInt();
 							CourseService cs=new CourseService();
@@ -111,9 +116,19 @@ public class StudentApplication {
 						                             ", Grad :" + entry.getValue());
 								break;
 							case 4:
+								//pay fee
+								System.out.println("Fees to be paid:"+ (50000-m.getStudent_fees()));
+								int fee=in.nextInt();
+								m.setStudent_fees(m.getStudent_fees()+fee);
+								System.out.println("you have paid:"+ fee);
+								
+								System.out.println("Remaining Fees to be paid:"+ (50000-m.getStudent_fees()));
+								
 								break;
-							
+							case 5: login=false;
+							break;
 							}
+						}while(login==true);
 							break;
 						}
 						
@@ -131,6 +146,39 @@ public class StudentApplication {
 				
 				break;
 			case 3:
+				System.out.println("Enter "+
+						"Username:");
+				
+				username=in.next();
+				System.out.println("Enter "+
+						"Password:");
+				password=in.next();
+				System.out.println("Select "+
+						"Role\n"+
+						"1. Student\n"+
+						"2. Professor\n"+
+						"3. Admin");
+				role=Integer.parseInt(in.next());
+				if(role==1)
+				{
+					int found=0;
+					for(Student m: ss.masterRegistry)
+					{
+//						System.out.println(m.getStudent_name());
+						if(m.getStudent_username().equals(username) && m.getStudent_password().equals(password))
+						{
+//							System.out.println(m.getStudent_username()+":"+m.getStudent_password());
+							found=1;
+							System.out.println("Please Enter New Password:");
+							String new_pass=in.next();
+							m.setStudent_password(new_pass);
+							System.out.println("Your Password has been successfully");
+							break;
+						}
+					}
+					if(found==0)
+						System.out.println("Invalid username or password.");
+				}
 				break;
 			case 4:
 				f=1;

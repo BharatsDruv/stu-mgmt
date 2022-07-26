@@ -17,8 +17,16 @@ public class Student {
 	private String student_email;
 	private ArrayList<Course> student_courses;
 	private HashMap<String,String> student_gradsheet;
+	private int student_fees=0;
 	
-	
+
+	public int getStudent_fees() {
+		return student_fees;
+	}
+
+	public void setStudent_fees(int student_fees) {
+		this.student_fees = student_fees;
+	}
 
 	public Student(int stu_id, String stu_name, String username, String password) {
 		student_id=stu_id;
