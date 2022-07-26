@@ -12,7 +12,8 @@ public class StudentApplication {
 
 	public static void main(String[] ar) throws IOException
 	{
-		
+		int f=0;
+		do {
 		Scanner in=new Scanner(System.in);
 		int choice =0;
 		StudentService ss=new StudentService();
@@ -78,6 +79,7 @@ public class StudentApplication {
 									if(course_choice==course.getCourse_id())
 									{
 										m.getStudent_courses().add(course);
+										m.getStudent_gradsheet().put(course.getCourse_name(), "NA");
 										System.out.println("Course has been added successfully.");
 										m.yourCourses();
 										break;
@@ -94,6 +96,7 @@ public class StudentApplication {
 									if(course_choice==course.getCourse_id())
 									{
 										m.getStudent_courses().remove(course);
+										m.getStudent_gradsheet().remove(course.getCourse_name());
 										System.out.println("Course has been removed successfully.");
 										m.yourCourses();
 										break;
@@ -101,6 +104,11 @@ public class StudentApplication {
 								}
 								break;
 							case 3:
+								System.out.println("Your Grads are:");
+								HashMap<String, String > hm=m.getStudent_gradsheet();
+								for (Map.Entry<String,String> entry : hm.entrySet()) 
+						            System.out.println("Course :" + entry.getKey() +
+						                             ", Grad :" + entry.getValue());
 								break;
 							case 4:
 								break;
@@ -118,27 +126,21 @@ public class StudentApplication {
 				
 			case 2:
 				
-				System.out.println("Professor\n Select\n"+
-						"1. Add Course\n"
-						+"2. Delete Course\n"
-						+"");
-				
-				int cc1=in.nextInt();
-				CourseService cs=new CourseService();
-				if(cc1==1)
-					cs.createCourse();
-				else if(cc1==2)
-					cs.deleteCourse();
+				System.out.println("Registraion Enter\n");
+				ss.registerStudent();
 				
 				break;
 			case 3:
 				break;
 			case 4:
+				f=1;
+				System.out.println("Thanks for visiting.");
 				break;
 		
 			default:
 					System.out.println("Enter valid option.");
 		}
+	}while(f==0);
 		//all other method calls
 	}
 }

@@ -16,8 +16,10 @@ public class Student {
 	private String student_password;
 	private String student_email;
 	private ArrayList<Course> student_courses;
+	private HashMap<String,String> student_gradsheet;
 	
 	
+
 	public Student(int stu_id, String stu_name, String username, String password) {
 		student_id=stu_id;
 		student_name=stu_name;
@@ -25,6 +27,8 @@ public class Student {
 		student_password=password;
 		student_courses=new ArrayList<>();
 		student_courses.add(new Course(105,"CS5"));
+		student_gradsheet=new HashMap<>();
+		student_gradsheet.put("CS5", "NA");
 	}
 	
 	public int getStudent_id() {
@@ -66,6 +70,13 @@ public class Student {
 
 	public void setStudent_courses(ArrayList<Course> student_courses) {
 		this.student_courses = student_courses;
+	}
+	public HashMap<String, String> getStudent_gradsheet() {
+		return student_gradsheet;
+	}
+
+	public void setStudent_gradsheet(HashMap<String, String> student_gradsheet) {
+		this.student_gradsheet = student_gradsheet;
 	}
 	
 	public void yourCourses()

@@ -1,6 +1,12 @@
 package com.bank.bean;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Professor {
+	public Professor(int prof_id, String prof_name, String username, String password) {
+		
+	}
 	
 	private int professor_id;
 	public int getProfessor_id() {
