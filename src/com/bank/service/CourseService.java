@@ -8,7 +8,7 @@ import java.io.*;
 
 public class CourseService {
 	
-	ArrayList<Course> courseList=new ArrayList<>();
+	public static ArrayList<Course> courseList=new ArrayList<>();
 	public void viewAvailableCourses() {
 		for (int i = 0; i < courseList.size(); i++) {
 			System.out.println(courseList.get(i).getCourse_name());
@@ -55,7 +55,6 @@ public class CourseService {
 		for (int i = 0; i < courseList.size(); i++) {
 			String j = courseList.get(i).getCourse_name();
 
-			sysou
 			
 			if (j.contentEquals(courseName)) {
 				courseList.remove(i);

@@ -10,6 +10,23 @@ public class StudentService {
 	
 	public static ArrayList<Student> masterRegistry = new ArrayList<Student>();
 	
+	public StudentService()
+	{
+		masterRegistry.add(new Student(1,"Jaimin"));
+		masterRegistry.add(new Student(2,"Akshat"));
+		masterRegistry.add(new Student(3,"Chirayu"));
+	}
+	
+	void displayStudents()
+	{
+		System.out.println("Student directory");
+		
+		for(Student s: masterRegistry)
+		{
+			System.out.println("Student:"+s.getStudent_name());
+		}
+	}
+	
 	public void registerStudent() throws IOException 
 	{
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -24,15 +41,34 @@ public class StudentService {
 		System.out.println(masterRegistry.get(masterRegistry.size() - 1).getStudent_name());
 		System.out.println("New student has been successfully added!");
 		System.out.println(" ");
+		displayStudents();
 	}
 	
 	public void updateStudent()
 	{
 		
 	}
-	public void deleteStudent()
+	public void deleteStudent() throws NumberFormatException, IOException
 	{
-		
+		System.out.println("To Remove Student");
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+		System.out.println("Enter the student's ID: ");
+		int stu_id = Integer.parseInt(in.readLine());
+		int f=0;
+		for(Student s: masterRegistry)
+		{
+			if(s.getStudent_id()==stu_id)
+			{
+				masterRegistry.remove(s);
+				System.out.println(stu_id+" Successfully removed");
+				displayStudents();
+				f=1;
+				break;
+			}
+		}
+		if(f==0)System.out.println("No student found with id: "+stu_id);
+
 	}
 	public void registerToCourse() throws IOException 
 	{

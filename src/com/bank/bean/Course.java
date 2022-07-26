@@ -2,7 +2,7 @@ package com.bank.bean;
 
 public class Course {
 
-	Course(int id, String name)
+	public Course(int id, String name)
 	{
 		course_id=id;
 		course_name=name;
