@@ -2,6 +2,7 @@
  * 
  */
 package com.bank.bean;
+import java.util.*;
 
 /**
  * @author win 10
@@ -10,10 +11,20 @@ package com.bank.bean;
 public class Student {
 
 	private int student_id;
+	private String student_name;
+	private String student_username;
+	private String student_password;
+	private String student_email;
+	private ArrayList<Course> student_courses;
 	
-	public Student(int stu_id, String stu_name) {
+	
+	public Student(int stu_id, String stu_name, String username, String password) {
 		student_id=stu_id;
 		student_name=stu_name;
+		student_username=username;
+		student_password=password;
+		student_courses=new ArrayList<>();
+		student_courses.add(new Course(105,"CS5"));
 	}
 	
 	public int getStudent_id() {
@@ -48,11 +59,23 @@ public class Student {
 	public void setStudent_email(String student_email) {
 		this.student_email = student_email;
 	}
-	private String student_name;
-	private String student_username;
-	private String student_password;
-	private String student_email;
 	
+	public ArrayList<Course> getStudent_courses() {
+		return student_courses;
+	}
+
+	public void setStudent_courses(ArrayList<Course> student_courses) {
+		this.student_courses = student_courses;
+	}
+	
+	public void yourCourses()
+	{
+		System.out.println("Your Courses:\n");
+		for(Course stu_course: student_courses)
+		{
+			System.out.println(stu_course.getCourse_id()+":"+stu_course.getCourse_name());
+		}
+	}
 
 	
 

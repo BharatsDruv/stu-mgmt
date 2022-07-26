@@ -12,9 +12,9 @@ public class StudentService {
 	
 	public StudentService()
 	{
-		masterRegistry.add(new Student(1,"Jaimin"));
-		masterRegistry.add(new Student(2,"Akshat"));
-		masterRegistry.add(new Student(3,"Chirayu"));
+		masterRegistry.add(new Student(1,"Jaimin","jaimindb", "1234"));
+		masterRegistry.add(new Student(2,"Akshat","akshatdb","1234"));
+		masterRegistry.add(new Student(3,"Chirayu","chirayudb","1234"));
 	}
 	
 	void displayStudents()
@@ -36,7 +36,7 @@ public class StudentService {
 		System.out.println("Enter the new student's Name: ");
 		String name = in.readLine();
 
-		Student newStudent = new Student(stu_id, name);
+		Student newStudent = new Student(stu_id, name, name+"db","1234");
 		masterRegistry.add(newStudent);
 		System.out.println(masterRegistry.get(masterRegistry.size() - 1).getStudent_name());
 		System.out.println("New student has been successfully added!");
@@ -87,7 +87,7 @@ public class StudentService {
 
 		for (int i = 0; i < cs.courseList.size(); i++) {
 			if (cs.courseList.get(i).getCourse_name() == courseName && cs.courseList.get(i).getCourse_id() == courseID) {
-				Student student = new Student(stuID, name);
+			//	Student student = new Student(stuID, name);
 				System.out.println("You have been successfully added to the course!");
 			}
 		}
@@ -107,7 +107,7 @@ public class StudentService {
 
 		for (int i = 0; i < cs.courseList.size(); i++) {
 			if (cs.courseList.get(i).getCourse_name() == courseName) {
-				Student student = new Student(stuID, name);
+				//Student student = new Student(stuID, name);
 				System.out.println("You have been successfully removed from the course!");
 			}
 		}

@@ -9,9 +9,20 @@ import java.io.*;
 public class CourseService {
 	
 	public static ArrayList<Course> courseList=new ArrayList<>();
-	public void viewAvailableCourses() {
+	
+	 
+	public CourseService() {
+		courseList.add(new Course(101, "CS1"));
+		courseList.add(new Course(102, "CS2"));
+		courseList.add(new Course(103, "CS3"));
+		
+		// TODO Auto-generated constructor stub
+	}
+	public void viewAvailableCourses() 
+	{
+		System.out.println("All available courses:");
 		for (int i = 0; i < courseList.size(); i++) {
-			System.out.println(courseList.get(i).getCourse_name());
+			System.out.println(courseList.get(i).getCourse_id()+": "+courseList.get(i).getCourse_name());
 		}
 	}
 
