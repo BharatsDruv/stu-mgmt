@@ -28,6 +28,10 @@ public class Student {
 		this.student_fees = student_fees;
 	}
 
+	public Student()
+	{
+		
+	}
 	public Student(int stu_id, String stu_name, String username, String password) {
 		student_id=stu_id;
 		student_name=stu_name;
